@@ -39,7 +39,11 @@ include "header-result-exam.php"; // header-result-exam.php được đưa vào 
         }
 
         $count = 0;
-        $res = mysqli_query($link, "select *from questions where category='$_SESSION[exam_category]'");
+        $res = mysqli_query($link, "(SELECT question_no FROM questions WHERE category='$_SESSION[exam_category]' AND level='easy' ORDER BY RAND() LIMIT 8)
+        UNION
+        (SELECT question_no FROM questions WHERE category='$_SESSION[exam_category]' AND level='medium' ORDER BY RAND() LIMIT 6)
+        UNION
+        (SELECT question_no FROM questions WHERE category='$_SESSION[exam_category]' AND level='hard' ORDER BY RAND() LIMIT 6)");
         $count = mysqli_num_rows($res);
         $wrong = $count - $correct;
 

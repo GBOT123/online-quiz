@@ -36,6 +36,16 @@ while($row=mysqli_fetch_array($res))
 <div class="content mt-3">
     <div class="animated fadeIn">
 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body d-flex justify-content-end">
+                        <input type="file" class="btn btn-info rounded">Tải file</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-lg-12">
@@ -85,13 +95,10 @@ while($row=mysqli_fetch_array($res))
 
                                         <!-- Level -->
                                         <div class="form-group"><label for="company" class="form-control-label">Độ khó</label>
-                                            <!-- Break line -->
-                                            </br>
-
                                             <!-- Select -->
-                                            <select name="cars" id="cars">
+                                            <select class="form-control" name="level">
                                                 <option value="easy">Dễ</option>
-                                                <option value="normal">Vừa</option>
+                                                <option value="medium">Vừa</option>
                                                 <option value="hard">Khó</option>
                                             </select>
                                         </div>
@@ -148,6 +155,15 @@ while($row=mysqli_fetch_array($res))
                                             </label><input type="file" name="fAnswer" class="form-control"
                                                 style="padding-bottom: 35px;"></div>
 
+                                        <!-- Level -->
+                                        <div class="form-group"><label for="company" class="form-control-label">Độ khó</label>
+                                            <!-- Select -->
+                                            <select class="form-control" name="flevel">
+                                                <option value="easy">Dễ</option>
+                                                <option value="medium">Vừa</option>
+                                                <option value="hard">Khó</option>
+                                            </select>
+                                        </div>
 
                                         <!-- Add Quest -->
                                         <div class="form-group">
@@ -354,7 +370,7 @@ if(isset($_POST["submitl"])){
     
     $loop=$loop+1;
 
-    mysqli_query($link,"insert into questions values(NULL, '$loop','$_POST[question]','$_POST[opt1]','$_POST[opt2]','$_POST[opt3]','$_POST[opt4]','$_POST[answer]','$exam_category')")
+    mysqli_query($link,"insert into questions values(NULL, '$loop','$_POST[question]','$_POST[opt1]','$_POST[opt2]','$_POST[opt3]','$_POST[opt4]','$_POST[answer]','$exam_category', '$_POST[level]')")
     or die(mysqli_error($link));
 
     ?>
@@ -425,7 +441,7 @@ if(isset($_POST["submit2"])){
     $dst_db5 = "opt_images/".$tm.$fnm5;
     move_uploaded_file($_FILES["fAnswer"]["tmp_name"],$dst5);
 
-    mysqli_query($link,"insert into questions values(NULL, '$loop','$_POST[fquestion]','$dst_db','$dst_db2','$dst_db3','$dst_db4','$dst_db5','$exam_category')")
+    mysqli_query($link,"insert into questions values(NULL, '$loop','$_POST[fquestion]','$dst_db','$dst_db2','$dst_db3','$dst_db4','$dst_db5','$exam_category','$_POST[flevel]')")
     or die(mysqli_error($link));
 
     ?>

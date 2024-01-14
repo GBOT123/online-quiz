@@ -19,8 +19,8 @@ if(isset($_SESSION["answer"][$queno]))
     $ans=$_SESSION["answer"][$queno];
 }
 
-$res=mysqli_query($link,"select * from questions where category='$_SESSION[exam_category]' 
-&& question_no=$_GET[questionno]");
+$res=mysqli_query($link, "select * from questions where category='$_SESSION[exam_category]' && question_no=$_GET[questionno]");
+
 $count=mysqli_num_rows($res);
 
 if($count==0)
@@ -40,7 +40,6 @@ else{
 <br>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +57,7 @@ else{
     <table class="tablez">
         <tr>
             <td class="tdz" colspan="2">
-                <?php echo "Câu ".$question_no.": ".$question;?>
+                <?php echo "Câu hỏi: ".$question;?>
             </td>
         </tr>
     </table>

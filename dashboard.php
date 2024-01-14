@@ -15,6 +15,14 @@ window.location = "login.php"; // chuyển hương đến trang login
 <?php
 }
 
+$res=mysqli_query($link,"(SELECT question_no FROM questions WHERE category='$_SESSION[exam_category]' AND level='easy' ORDER BY RAND() LIMIT 8)
+UNION
+(SELECT question_no FROM questions WHERE category='$_SESSION[exam_category]' AND level='medium' ORDER BY RAND() LIMIT 6)
+UNION
+(SELECT question_no FROM questions WHERE category='$_SESSION[exam_category]' AND level='hard' ORDER BY RAND() LIMIT 6)");
+$result_array = mysqli_fetch_all($res, MYSQLI_ASSOC);
+$values_array = array_column($result_array, 'question_no');
+
 ?>
 
 <div class="tableOption">
@@ -29,15 +37,15 @@ window.location = "login.php"; // chuyển hương đến trang login
         <div id="current_que" style="float:right; font-weight: bold;">0</div>
         <div style="float:right; font-weight: bold;"> &nbsp;/ &nbsp;</div>
 
-        <div id="total_que" style="float:right; font-weight: bold;">0</div>
+        <div id="total_que" style="float:right; font-weight: bold;">20</div>
 
     </div>
 
     <div id="load_questions"></div>
 
     <div class="button-container">
-        <input type="button" class="buttonnext" value="Câu trước" onclick="load_previous();">&nbsp;
-        <input type="button" class="buttonprev" value="Câu tiếp theo" onclick="load_next();">
+        <input type="button" class="buttonprev" value="Câu trước" onclick="load_previous();">&nbsp;
+        <input type="button" class="buttonnext" id="btnNext" value="Câu tiếp theo" onclick="load_next();">
     </div>
 
 
@@ -61,17 +69,22 @@ function load_total_que() {
     xmlhttp.send(null); // hàm send(null) dùng để gửi yêu cầu đến máy chủ 
 }
 
+var i = 0
+var valuesArray = <?php echo json_encode($values_array); ?>;
 
-var questionno = "1"; // khởi tạo biến questionno và gán bằng 1
-load_questions(questionno); // gọi hàm load_questions(questionno) để tải câu hỏi đầu tiên
+var questionno = 0;  // khởi tạo biến questionno và gán bằng 1
+load_questions(); // gọi hàm load_questions(questionno) để tải câu hỏi đầu tiên
 
 // Hàm load_questions(questionno) được sử dụng để gửi yêu cầu Ajax đến một trang PHP để lấy câu hỏi từ CSDL
 // Tham số questionno được truyền vào để chỉ định số thứ tự của câu hỏi được yêu cầu
-function load_questions(questionno) {
+function load_questions() {
+    console.log(i);
+    questionno = valuesArray[i];
+    console.log('no', questionno);
 
     // đưa giá trị của biến questionno vào phần tử HTML có id là "current_que"
     // và hiển thị số câu hỏi hiện tại trên giao diện
-    document.getElementById("current_que").innerHTML = questionno;
+    document.getElementById("current_que").innerHTML = i+1;
     // XMLHttpRequest để gửi yêu cầu HTTP đến server và nhận lại kết quả từ server mà không cần tải lại trang
     var xmlhttp = new XMLHttpRequest(); 
     xmlhttp.onreadystatechange = function() { // theo dõi trạng thái của đối tượng XMLHttpRequest
@@ -111,19 +124,28 @@ function radioclick(radiovalue, questionno) { // radiovalue là câu trả lời
 
 // Hàm load_previous được sử dụng để tải câu hỏi trước
 function load_previous() {
-    if (questionno == "1") { // nếu bằng 1
-        load_questions(questionno); // load lại câu hỏi đầu tiên
+    if (i == 0) { // nếu bằng 1
+        load_questions(); // load lại câu hỏi đầu tiên
     } else { // nếu lớn hơn 1
-        questionno = eval(questionno) - 1; // giảm questionno xuống 1
-        load_questions(questionno); // load câu hỏi vừa được tính
+        i -= 1; // giảm questionno xuống 1
+        load_questions(); // load câu hỏi vừa được tính
     }
 }
 
 // Hàm load_previous được sử dụng để tải câu hỏi sau
 function load_next() {
+    if (i === 19) {
+        window.location = "result.php";
+    } else {
+        if (i === 18) {
+            // câu kế cuối
+            document.getElementById('btnNext').value = 'Kết thúc';
+            document.getElementById('btnNext').className = 'buttonend';
+        }
+        i += 1; // lấy câu tiếp theo
+        load_questions(); // load câu hỏi vừa được tính
+    }
 
-    questionno = eval(questionno) + 1; // tăng questionno lên 1
-    load_questions(questionno); // load câu hỏi vừa được tính
 
 }
 </script>

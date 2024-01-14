@@ -224,14 +224,15 @@ CREATE TABLE `questions` (
   `opt3` varchar(200) NOT NULL,
   `opt4` varchar(200) NOT NULL,
   `answer` varchar(200) NOT NULL,
-  `category` varchar(200) NOT NULL
+  `category` varchar(200) NOT NULL,
+  `level` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `questions`
 --
 
-INSERT INTO `questions` (`id`, `question_no`, `question`, `opt1`, `opt2`, `opt3`, `opt4`, `answer`, `category`) VALUES
+INSERT INTO `questions` (`id`, `question_no`, `question`, `opt1`, `opt2`, `opt3`, `opt4`, `answer`, `category`, `level`) VALUES
 (24, '1', 'Trong MS Word 2016, để chèn bảng có độ rộng của mỗi cột là 1 inches, ta dùng lệnh nào trong hộp thoại Insert Table?', 'Fixed column width', 'AutoFit to contents', 'AutoFit to window', 'Remember dimensions for new table', 'Fixed column width', 'Word'),
 (25, '2', 'Trong MS Word 2016, để thực hiện lệnh tìm kiếm và thay thế văn bản thì trong hộp thoại Find Replace, ta sẽ gõ từ cần tìm trong mục nào?', 'Find what', 'Replace with', 'Find with', 'Replay what', 'Find what', 'Word'),
 (26, '3', 'Trong MS 2016, định dạng Drop Cap dùng để làm gì?', 'Tạo chữ to đầu đoạn và chữ này có thể kéo dài trên nhiều dòng', 'Tạo chữ to giữa đoạn và chữ này có thể kéo dài trên nhiều dòng', 'Tạo chữ to cuối đoạn và chữ này có thể kéo dài trên nhiều dòng', 'Tạo chữ to ở vị trí bất kì trong đoạn và chữ này có thể kéo dài trên nhiều dòng', 'Tạo chữ to đầu đoạn và chữ này có thể kéo dài trên nhiều dòng', 'Word'),

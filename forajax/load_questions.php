@@ -49,7 +49,7 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\online-quiz\css\question.css">
+    <link rel="stylesheet" href="css\question.css">
 
 
 </head>

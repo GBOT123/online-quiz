@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <link rel="icon" type="image/png" href="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\Menu\Picture\icon-tab.png" />
+    <link rel="icon" type="image/png" href="assets\Picture\icon-tab.png" />
 
     <title>THI TRẮC NGHIỆM</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="\css\homeinexam.css">
+    <link rel="stylesheet" href="css\homeinexam.css">
 
 </head>
 
@@ -32,7 +32,7 @@
             </li>
         </ul>
         <div class="user-info">
-            <img src="\admin\images\360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" alt="Avatar"
+            <img src="admin\images\360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" alt="Avatar"
                 class="avatar">
             <!-- Biến $_SESSION["username"] lưu trữ thông tin tên đăng nhập của người dùng -->
             <span class="username"><?php echo $_SESSION["username"]; ?></span>

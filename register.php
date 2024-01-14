@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) { // sử dụng hàm isset($_POST['submit']) kiể
 
     <title>Đăng kí người dùng</title>
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="/Simple-Quiz-Web-master\Simple-Quiz-Web-master\online-quiz\css\loginuser.css">
+    <link rel="stylesheet" href="css\loginuser.css">
 
     <!-- Thư viện icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -100,7 +100,7 @@ if (isset($_POST['submit'])) { // sử dụng hàm isset($_POST['submit']) kiể
                 <input type="password" name="password" required placeholder="*********" id="password">
                 <i class="fas fa-eye" id="togglePassword"></i>
                 <!-- file JS -->
-                <script src="/login system admin/js/showorhide.js"></script>
+                <script src="/login_system_admin/js/showorhide.js"></script>
             </div>
 
             <div class="input-icon-login">
@@ -108,7 +108,7 @@ if (isset($_POST['submit'])) { // sử dụng hàm isset($_POST['submit']) kiể
                 <input type="password" name="cpassword" required placeholder="*********" id="cpassword">
                 <i class="fas fa-eye" id="ctogglePassword"></i>
                 <!-- file JS -->
-                <script src="/login system admin/js/showorhide2.js"></script>
+                <script src="/login_system_admin/js/showorhide2.js"></script>
             </div>
 
             <div class="input-icon-login">

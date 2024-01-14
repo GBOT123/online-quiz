@@ -10,7 +10,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\online-quiz\admin\images\logo (2).png">
+    <link rel="shortcut icon" href="images\logo (2).png">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="css/test.css"> -->
@@ -57,14 +57,14 @@
                 <a class="navbar-brand" href="#">
                     Quản lý câu hỏi
                 </a>
-                <a class="navbar-brand hidden" href="./"><img src="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\online-quiz\admin\images\logo2.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images\logo2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <!-- active có chức năng đổi màu xanh của thẻ chọn-->
                     <li class="active">
-                        <a href="exam_category.php"> <i class="menu-icon fa fa-edit"></i>Thêm và chỉnh
+                        <a href="index.php"> <i class="menu-icon fa fa-edit"></i>Thêm và chỉnh
                             sửa chủ đề
 
                         </a>
@@ -124,7 +124,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle"
-                                src="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\online-quiz\admin\images\Picsart_23-03-30_10-18-14-850.png" alt="User Avatar">
+                                src="images\Picsart_23-03-30_10-18-14-850.png" alt="User Avatar">
                         </a>
 
                     </div>

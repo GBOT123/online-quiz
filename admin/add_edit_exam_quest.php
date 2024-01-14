@@ -7,7 +7,7 @@ if(!isset($_SESSION["admin_name"]))
 {
     ?>
 <script type="text/javascript">
-window.location = "\Simple-Quiz-Web-master\Simple-Quiz-Web-master\login system admin\login_form.php";
+window.location = "login_system_admin\login_form.php";
 </script>
 <?php
 }

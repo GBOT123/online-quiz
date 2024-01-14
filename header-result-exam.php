@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <link rel="icon" type="image/png" href="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\Menu\Picture\icon-tab.png" />
+    <link rel="icon" type="image/png" href="assets\Picture\icon-tab.png" />
 
     <title>THI TRẮC NGHIỆM</title>
 

@@ -7,7 +7,7 @@ if(!isset($_SESSION["admin_name"]))
 {
     ?>
 <script type="text/javascript">
-window.location = "/login system admin/login_form.php";
+window.location = "/login_system_admin/login_form.php";
 </script>
 <?php
 }
@@ -111,7 +111,7 @@ if(isset($_POST["submitl"])){
     ?>
 <script type="text/javascript">
 alert("Cập nhật chủ đề câu hỏi thành công");
-window.location = "exam_category.php";
+window.location = "index.php";
 </script>
 <?php
 }

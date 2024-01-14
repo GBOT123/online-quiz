@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <link rel="icon" type="image/png" href="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\Menu\Picture\icon-tab.png" />
+    <link rel="icon" type="image/png" href="assets\Picture\icon-tab.png" />
 
     <title>THI TRẮC NGHIỆM</title>
 
@@ -14,9 +14,9 @@
 
 
 
-    <link rel="stylesheet" href="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\online-quiz\css\style.css">
-    <link rel="stylesheet" href="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\online-quiz\css\homeinexam.css">
-    <link rel="stylesheet" href="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\online-quiz\css\result.css">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\homeinexam.css">
+    <link rel="stylesheet" href="css\result.css">
 
 </head>
 
@@ -36,7 +36,7 @@
             </li>
         </ul>
         <div class="user-info">
-            <img src="\Simple-Quiz-Web-master\Simple-Quiz-Web-master\online-quiz\admin\images\360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" alt="Avatar"
+            <img src="admin\images\360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" alt="Avatar"
                 class="avatar">
             <!-- Biến $_SESSION["username"] lưu trữ thông tin tên đăng nhập của người dùng -->
             <span class="username"><?php echo $_SESSION["username"]; ?></span>

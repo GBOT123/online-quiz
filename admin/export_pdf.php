@@ -5,7 +5,7 @@ include "../connection.php";
 
 if(!isset($_SESSION["admin_name"]))
 {
-    header('Location: /login system admin/login_form.php');
+    header('Location: login_system_admin/login_form.php');
     exit();
 }
 

@@ -5,5 +5,5 @@ session_destroy(); // hủy bỏ phiên làm việc đó. Tất cả các biến
 ?>
 
 <script type="text/javascript">
-window.location = "http://localhost/Simple-Quiz-Web-master/online-quiz/index.php"; // chuyển hướng đến trang menu
+window.location = "index.php"; // chuyển hướng đến trang menu
 </script>

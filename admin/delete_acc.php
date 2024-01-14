@@ -6,7 +6,7 @@ include "../connection.php";
 
 if(!isset($_SESSION["admin_name"])) {
     // nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
-    header("Location: /login system admin/login_form.php");
+    header("Location: login_system_admin/login_form.php");
     exit();
 }
 

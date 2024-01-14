@@ -1,32 +1,41 @@
 <?php
 
 session_start(); // bắt đầu phiên làm việc
-include "connection.php";
+// nạp tập tin cấu hình cho kết nối tới cơ sở dữ liệu MySQL
+@include 'config.php'; 
+@include './online-quiz/connection.php';
 
 
 if (isset($_POST['submit'])) { // sử dụng hàm isset($_POST['submit']) kiểm tra xem biểu mẫu đã được gửi đi chưa
 
     // mysqli_real_escape_string() bảo vệ khỏi tấn công SQL injection
     // và lấy thông tin email và password được gửi từ biểu mẫu
-    $name = mysqli_real_escape_string($link, $_POST['username']);
-    $pass = md5($_POST['password']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass = md5($_POST['password']); // md5() để mã hóa password
 
-    $select = " SELECT * FROM registration WHERE username = '$name' && password = '$pass' "; // truy vấn sql
+    // truy vấn SQL
+    $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
 
-    $result = mysqli_query($link, $select); // thực hiện truy vấn và lưu thông tin vào biến result
-    
+    $result = mysqli_query($conn, $select); // thực hiện truy vấn và lưu thông tin vào biến result
+
     // kiểm tra có bản ghi nào phù hợp với thông tin đăng nhập hay không
     if (mysqli_num_rows($result) > 0) {
+
         $row = mysqli_fetch_array($result); // mysqli_fetch_array() để lấy bản ghi đầu tiên từ kết quả truy vấn và lưu trữ nó trong biến $row
-        $_SESSION['username'] = $row['username']; //  lưu tên đăng nhập của người dùng vào biến phiên làm việc
-         // chuyển hướng người dùng tới trang select_exam.php
-        header('location: select_exam.php');
-        exit(); // dừng toàn bộ quá trình và chuyển hướng đến trang khác
-    } else {
-        $error[] = 'Không đúng tên người dùng hoặc mật khẩu';
+
+        if ($row['user_type'] == 'admin') { // kiểm tra xem giá trị của trường user_type có bằng admin không 
+
+            $_SESSION['admin_name'] = $row['name']; // lưu tên quản trị viên vào session với giá trị của trường name
+            // chuyển hướng người dùng tới trang quản lý (tức là file index.php trong thư mục admin
+            header('location:../index.php'); 
+            exit(); // dừng toàn bộ quá trình và chuyển hướng đến trang khác
+        }
+    } else { // nếu thông tìm thấy
+        $error[] = 'Không đúng email hoặc mật khẩu';
     }
 };
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,18 +43,19 @@ if (isset($_POST['submit'])) { // sử dụng hàm isset($_POST['submit']) kiể
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- icon title -->
-    <link rel="icon" type="image/png" href="/online-quiz/img/User_icon_2.svg.png" />
-
+    <link rel="icon" type="image/png" href="login_system_admin/img/admin_title.png" />
 
     <!-- Tên web -->
-    <title>Đăng nhập người dùng</title>
+    <title>Đăng nhập admin</title>
+
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/loginuser.css">
+    <link rel="stylesheet" href="..\..\css\loginuser.css">
 
     <!-- Thư viện icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
 </head>
 
 <body>
@@ -65,7 +75,7 @@ if (isset($_POST['submit'])) { // sử dụng hàm isset($_POST['submit']) kiể
             ?>
 
             <div class="input-icon-login">
-                <input type="text" name="username" required placeholder="Nhập tên người dùng">
+                <input type="email" name="email" required placeholder="Nhập email">
                 <!-- Thêm icon vào bên phải của input -->
                 <i class="fas fa-envelope"></i>
             </div>
@@ -75,12 +85,12 @@ if (isset($_POST['submit'])) { // sử dụng hàm isset($_POST['submit']) kiể
                 <input type="password" name="password" required placeholder="********" id="password">
                 <i class="fas fa-eye" id="togglePassword"></i>
                 <!-- file JS -->
-                <script src="/login_system_admin/js/showorhide.js"></script>
+                <script src="js/showorhide.js"></script>
             </div>
 
             <input type="submit" name="submit" value="Đăng nhập" class="form-btn">
 
-            <p>Bạn chưa có tài khoản ? <a href="register.php">Đăng kí tại đây!</a></p>
+            <p>Bạn chưa có tài khoản ? <a href="register_form.php">Đăng kí tại đây!</a></p>
         </form>
 
     </div>

@@ -8,7 +8,7 @@ if(!isset($_SESSION["admin_name"]))
 {
     ?>
 <script type="text/javascript">
-window.location = "/login system admin/login_form.php";
+window.location = "/login_system_admin/login_form.php";
 </script>
 <?php
 }
@@ -48,40 +48,53 @@ while($row=mysqli_fetch_array($res))
                                 <div class="card">
                                     <div class="card-header"><strong>Thêm câu hỏi loại văn bản</strong></div>
                                     <div class="card-body card-block">
-                                        <div class="form-group"><label for="company" class=" form-control-label">
+                                        <div class="form-group"><label for="company" class="form-control-label">
                                                 Câu hỏi
                                             </label><input type="text" name="question" placeholder="Thêm câu hỏi"
                                                 class="form-control"></div>
 
                                         <!-- op1 -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Lựa
+                                        <div class="form-group"><label for="company" class="form-control-label">Lựa
                                                 chọn 1
                                             </label><input type="text" name="opt1" placeholder="Thêm lựa chọn"
                                                 class="form-control"></div>
 
                                         <!-- op2 -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Lựa
+                                        <div class="form-group"><label for="company" class="form-control-label">Lựa
                                                 chọn 2
                                             </label><input type="text" name="opt2" placeholder="Thêm lựa chọn"
                                                 class="form-control"></div>
 
                                         <!-- op3 -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Lựa
+                                        <div class="form-group"><label for="company" class="form-control-label">Lựa
                                                 chọn 3
                                             </label><input type="text" name="opt3" placeholder="Thêm lựa chọn"
                                                 class="form-control"></div>
 
                                         <!-- op4 -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Lựa
+                                        <div class="form-group"><label for="company" class="form-control-label">Lựa
                                                 chọn 4
                                             </label><input type="text" name="opt4" placeholder="Thêm lựa chọn"
                                                 class="form-control"></div>
 
                                         <!-- Answer -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Câu đáp
+                                        <div class="form-group"><label for="company" class="form-control-label">Câu đáp
                                                 án
                                             </label><input type="text" name="answer" placeholder="Thêm đáp án"
                                                 class="form-control"></div>
+
+                                        <!-- Level -->
+                                        <div class="form-group"><label for="company" class="form-control-label">Độ khó</label>
+                                            <!-- Break line -->
+                                            </br>
+
+                                            <!-- Select -->
+                                            <select name="cars" id="cars">
+                                                <option value="easy">Dễ</option>
+                                                <option value="normal">Vừa</option>
+                                                <option value="hard">Khó</option>
+                                            </select>
+                                        </div>
 
                                         <!-- Add Quest -->
                                         <div class="form-group">
@@ -99,38 +112,38 @@ while($row=mysqli_fetch_array($res))
                                 <div class="card">
                                     <div class="card-header"><strong>Thêm câu hỏi loại hình ảnh</strong></div>
                                     <div class="card-body card-block">
-                                        <div class="form-group"><label for="company" class=" form-control-label"> Câu
+                                        <div class="form-group"><label for="company" class="form-control-label"> Câu
                                                 hỏi
                                             </label><input type="text" name="fquestion" placeholder="Thêm câu hỏi"
                                                 class="form-control"></div>
 
                                         <!-- op1 -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Lựa
+                                        <div class="form-group"><label for="company" class="form-control-label">Lựa
                                                 chọn 1
                                             </label><input type="file" name="fopt1" class="form-control"
                                                 style="padding-bottom: 35px;"></div>
 
                                         <!-- op2 -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Lựa
+                                        <div class="form-group"><label for="company" class="form-control-label">Lựa
                                                 chọn 2
                                             </label><input type="file" name="fopt2" class="form-control"
                                                 style="padding-bottom: 35px;"></div>
 
                                         <!-- op3 -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Lựa
+                                        <div class="form-group"><label for="company" class="form-control-label">Lựa
                                                 chọn 3
                                             </label><input type="file" name="fopt3" class="form-control"
                                                 style="padding-bottom: 35px;"></div>
 
                                         <!-- op4 -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Lựa
+                                        <div class="form-group"><label for="company" class="form-control-label">Lựa
                                                 chọn 4
                                             </label><input type="file" name="fopt4" class="form-control"
                                                 style="padding-bottom: 35px;"></div>
 
 
                                         <!-- Answer -->
-                                        <div class="form-group"><label for="company" class=" form-control-label">Câu đáp
+                                        <div class="form-group"><label for="company" class="form-control-label">Câu đáp
                                                 án
                                             </label><input type="file" name="fAnswer" class="form-control"
                                                 style="padding-bottom: 35px;"></div>

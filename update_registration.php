@@ -104,17 +104,17 @@ else {
             <div class="input-icon-login">
 
                 <input type="password" name="password" required placeholder="*********" id="password">
-                <i class="fas fa-eye" id="togglePassword"></i>
+                <!-- <i class="fas fa-eye" id="togglePassword"></i> -->
                 <!-- file JS -->
-                <script src="login_system_admin\js\showorhide.js"></script>
+                <!-- <script src="login_system_admin\js\showorhide.js"></script> -->
             </div>
 
             <div class="input-icon-login">
 
                 <input type="password" name="cpassword" required placeholder="*********" id="cpassword">
-                <i class="fas fa-eye" id="ctogglePassword"></i>
+                <!-- <i class="fas fa-eye" id="ctogglePassword"></i> -->
                 <!-- file JS -->
-                <script src="login_system_admin\js\showorhide2.js"></script>
+                <!-- <script src="login_system_admin\js\showorhide2.js"></script> -->
             </div>
 
             <div class="input-icon-login">

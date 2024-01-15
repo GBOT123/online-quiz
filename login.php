@@ -73,9 +73,9 @@ if (isset($_POST['submit'])) { // sử dụng hàm isset($_POST['submit']) kiể
             <div class="input-icon-pass-use">
 
                 <input type="password" name="password" required placeholder="********" id="password">
-                <i class="fas fa-eye" id="togglePassword"></i>
+                <!-- <i class="fas fa-eye" id="togglePassword"></i> -->
                 <!-- file JS -->
-                <script src="/login_system_admin/js/showorhide.js"></script>
+                <!-- <script src="/login_system_admin/js/showorhide.js"></script> -->
             </div>
 
             <input type="submit" name="submit" value="Đăng nhập" class="form-btn">

@@ -33,58 +33,6 @@ while ($row = mysqli_fetch_array($res)) {
 
 <div class="content mt-3">
     <div class="animated fadeIn">
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body d-flex justify-content-end">
-                        <button type="button" data-toggle="modal" data-target="#modalUpload" class="btn btn-info rounded">Upload file câu hỏi</button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="modalUploadTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalUploadLongTitle">Upload File Câu Hỏi</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="container-fluid">
-                                            <div class="d-flex flex-row justify-content-between">
-                                                <div>File mẫu</div>
-                                                <div>
-                                                    <a class="text-success" href="assets/instruct_exam.xlsx">download here</a>
-                                                </div>
-                                            </div>
-
-                                            <hr />
-
-                                            <form method="POST" action="actions/upload_instruct_exam.php" enctype="multipart/form-data">
-                                                <div>Upload file</div>
-                                                <div class="mt-2">
-                                                    <input type="file" name="excel_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
-                                                </div>
-                                                <div class="text-center mt-2">
-                                                    <input type="submit" name="submit_file" class="btn btn-warning rounded" value="Tải lên file" />
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary rounded">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -375,6 +323,7 @@ if (isset($_POST["submitl"])) {
 ?>
     <script type="text/javascript">
         alert("Thêm câu hỏi thành công");
+        console.log('cai dit');
         window.location.href = window.location.href;
     </script>
 <?php

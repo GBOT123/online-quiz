@@ -15,13 +15,13 @@ window.location = "login.php"; // chuyển hương đến trang login
 <?php
 }
 
-$res=mysqli_query($link,"(SELECT question_no FROM questions WHERE category='$_SESSION[exam_category]' AND level='easy' ORDER BY RAND() LIMIT 8)
+$res=mysqli_query($link,"(SELECT id FROM questions WHERE category='$_SESSION[exam_category]' AND level='easy' ORDER BY RAND() LIMIT 8)
 UNION
-(SELECT question_no FROM questions WHERE category='$_SESSION[exam_category]' AND level='medium' ORDER BY RAND() LIMIT 6)
+(SELECT id FROM questions WHERE category='$_SESSION[exam_category]' AND level='medium' ORDER BY RAND() LIMIT 6)
 UNION
-(SELECT question_no FROM questions WHERE category='$_SESSION[exam_category]' AND level='hard' ORDER BY RAND() LIMIT 6)");
+(SELECT id FROM questions WHERE category='$_SESSION[exam_category]' AND level='hard' ORDER BY RAND() LIMIT 6)");
 $result_array = mysqli_fetch_all($res, MYSQLI_ASSOC);
-$values_array = array_column($result_array, 'question_no');
+$values_array = array_column($result_array, 'id');
 
 ?>
 
@@ -74,13 +74,13 @@ var i = 0
 var valuesArray = <?php echo json_encode($values_array); ?>;
 var totalQuestion = 0;
 
-var questionno = 0;  // khởi tạo biến questionno và gán bằng 1
+var id = 0;  // khởi tạo biến questionno và gán bằng 1
 load_questions(); // gọi hàm load_questions(questionno) để tải câu hỏi đầu tiên
 
 // Hàm load_questions(questionno) được sử dụng để gửi yêu cầu Ajax đến một trang PHP để lấy câu hỏi từ CSDL
 // Tham số questionno được truyền vào để chỉ định số thứ tự của câu hỏi được yêu cầu
 function load_questions() {
-    questionno = valuesArray[i];
+    id = valuesArray[i];
 
     // đưa giá trị của biến questionno vào phần tử HTML có id là "current_que"
     // và hiển thị số câu hỏi hiện tại trên giao diện
@@ -99,14 +99,14 @@ function load_questions() {
         }
     };
     // sử dụng xmlhttp để tạo một yêu cầu GET HTTP đến tệp load_questions.php nằm trong thư mục forajax trên server
-    xmlhttp.open("GET", "forajax/load_questions.php? questionno=" + questionno, true);
+    xmlhttp.open("GET", "forajax/load_questions.php?id=" + id, true);
     // chuỗi kết hợp của địa chỉ tệp và tham số questionno để truy vấn thông tin câu hỏi cần tải
     // true để bật chế độ bất đồng bộ cho yêu cầu GET
     xmlhttp.send(null); // hàm send(null) dùng để gửi yêu cầu đến máy chủ 
 }
 
 //Hàm radioclick được sử dụng để lưu câu trả lời của ngdùng vào session khi họ chọn câu trả lời cho một câu hỏi trắc nghiệm.
-function radioclick(radiovalue, questionno) { // radiovalue là câu trả lời được chọn, questionno là stt câu hỏi
+function radioclick(radiovalue, id) { // radiovalue là câu trả lời được chọn, questionno là stt câu hỏi
 
     // hàm sử dụng đối tượng XMLHttpRequest để gửi yêu cầu đến trang save_answer_in_session.php
     var xmlhttp = new XMLHttpRequest();
@@ -116,7 +116,7 @@ function radioclick(radiovalue, questionno) { // radiovalue là câu trả lời
         }
     };
     // sử dụng xmlhttp để tạo một yêu cầu GET HTTP đến tệp save_answer_in_session.php nằm trong thư mục forajax trên server
-    xmlhttp.open("GET", "forajax/save_answer_in_session.php?questionno=" + questionno + "&value1=" + radiovalue, true);
+    xmlhttp.open("GET", "forajax/save_answer_in_session.php?id=" + id + "&value1=" + radiovalue, true);
     // true để bật chế độ bất đồng bộ cho yêu cầu GET
     xmlhttp.send(null); // hàm send(null) dùng để gửi yêu cầu đến máy chủ 
 

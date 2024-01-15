@@ -2,7 +2,7 @@
 session_start();
 include "../connection.php";
 
-$question_no="";
+$id="";
 $question="";
 $opt1="";
 $opt2="";
@@ -12,14 +12,14 @@ $answer="";
 $count=0;
 $ans="";
 
-$queno=$_GET["questionno"];
+$queno=$_GET["id"];
 
 if(isset($_SESSION["answer"][$queno]))
 {
     $ans=$_SESSION["answer"][$queno];
 }
 
-$res=mysqli_query($link, "select * from questions where category='$_SESSION[exam_category]' && question_no=$_GET[questionno]");
+$res=mysqli_query($link, "select * from questions where category='$_SESSION[exam_category]' && id=$_GET[id]");
 
 $count=mysqli_num_rows($res);
 
@@ -33,7 +33,7 @@ else{
         $options = array($row["opt1"], $row["opt2"], $row["opt3"], $row["opt4"]);
         shuffle($options);
         
-        $question_no=$row["question_no"];
+        $id=$row["id"];
         $question=$row["question"];
         $opt1 = $options[0];
         $opt2 = $options[1];
@@ -76,7 +76,7 @@ else{
                 <label class="option">
                     <!-- Dấu chám radio -->
                     <input type="radio" name="r1" id="r1" value="<?php echo $opt1;?>"
-                        onclick="radioclick(this.value,<?php echo $question_no ?>)" <?php
+                        onclick="radioclick(this.value,<?php echo $id ?>)" <?php
             if($ans==$opt1){
                 echo "checked";
             } 
@@ -106,7 +106,7 @@ else{
                 <label class="option">
 
                     <input type="radio" name="r1" id="r1" value="<?php echo $opt2;?> "
-                        onclick="radioclick(this.value,<?php echo $question_no ?>)" <?php
+                        onclick="radioclick(this.value,<?php echo $id ?>)" <?php
             if($ans==$opt2){
                 echo "checked";
             } 
@@ -135,7 +135,7 @@ else{
                 <label class="option">
 
                     <input type="radio" name="r1" id="r1" value="<?php echo $opt3;?>"
-                        onclick="radioclick(this.value,<?php echo $question_no ?>)" <?php
+                        onclick="radioclick(this.value,<?php echo $id ?>)" <?php
             if($ans==$opt3){
                 echo "checked";
             } 
@@ -164,7 +164,7 @@ else{
                 <label class="option">
 
                     <input type="radio" name="r1" id="r1" value="<?php echo $opt4;?>"
-                        onclick="radioclick(this.value,<?php echo $question_no ?>)" <?php
+                        onclick="radioclick(this.value,<?php echo $id ?>)" <?php
         if($ans==$opt4){
             echo "checked";
         } 

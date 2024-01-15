@@ -16,18 +16,20 @@ include "header-result-exam.php"; // header-result-exam.php được đưa vào 
         $wrong = 0;
 
         if (isset($_SESSION["answer"])) { // dùng isset() kiểm tra biến session "answer" đã được đặt hay chưa
-            for ($i = 1; $i <= sizeof($_SESSION["answer"]); $i++) { // duyệt qua tất cả các câu hỏi mà người dùng đã trả lời
+            echo '<pre>';
+            var_dump($_SESSION["answer"][50]);
+            echo '</pre>';
+            foreach ($_SESSION["answer"] as $key => $value) {
                 $answer = "";
-                // thực hiện truy vấn và lưu thông tin vào biến res
-                $res = mysqli_query($link, "select *from questions where category='$_SESSION[exam_category]'
-                && question_no=$i");
-                // mysqli_fetch_array() để lấy ra từng dòng của kết quả truy vấn và gán giá trị cột "answer" tương ứng trong dòng đó cho biến $answer
+                $res = mysqli_query($link, "select * from questions where category='$_SESSION[exam_category]'
+                && id=$key");
+
                 while ($row = mysqli_fetch_array($res)) {
                     $answer = $row["answer"];
                 }
 
-                if (isset($_SESSION["answer"][$i])) { // dùng isset() để kiểm tra xem người dùng đã trả lời câu hỏi này chưa
-                    if ($answer == $_SESSION["answer"][$i]) { // nếu trả lời đúng
+                if (isset($value)) { // dùng isset() để kiểm tra xem người dùng đã trả lời câu hỏi này chưa
+                    if ($answer == $value) { // nếu trả lời đúng
                         $correct = $correct + 1;
                     } else { // nếu trả lời sai
                         $wrong = $wrong + 1;
@@ -61,12 +63,11 @@ include "header-result-exam.php"; // header-result-exam.php được đưa vào 
         ?>
     </div>
 
-
 </div>
 
 <?php
 if (isset($_SESSION["exam_start"])) {
-    date_default_timezone_set('Asia/Ho_Chi_Minh');//thời gian tại VN hiện tại
+    date_default_timezone_set('Asia/Ho_Chi_Minh'); //thời gian tại VN hiện tại
 
     $date = date("H:i d/m/Y"); //H: là giờ, i: là giây, d/m/y ngày/tháng/năm
     mysqli_query($link, "insert into exam_results(id,username,exam_type,total_question,correct_answer,wrong_answer,exam_time)
@@ -76,9 +77,9 @@ if (isset($_SESSION["exam_start"])) {
 if (isset($_SESSION["exam_start"])) {
     unset($_SESSION["exam_start"]);
 ?>
-<script type="text/javascript">
-window.location.href = window.location.href;
-</script>
+    <script type="text/javascript">
+        window.location.href = window.location.href;
+    </script>
 <?php
 }
 

@@ -193,11 +193,13 @@ while ($row = mysqli_fetch_array($res)) {
 
                             <?php
                             $res = mysqli_query($link, "select * from questions where category = '$exam_category' order by question_no asc");
+                            $i = 0;
                             while ($row = mysqli_fetch_array($res)) {
+                                $i++;
                                 echo "<tr>";
 
                                 echo "<td>";
-                                echo $row["question_no"];
+                                echo $i;
                                 echo "</td>";
 
                                 echo "<td>";

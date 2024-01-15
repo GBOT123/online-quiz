@@ -61,7 +61,8 @@ function load_total_que() {
         // nếu trạng thái của yêu cầu là 4 và trạng thái HTTP là 200, 
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             // nội dung phản hồi sẽ được gán vào phần tử HTML có id là "total_que"
-            document.getElementById("total_que").innerHTML = xmlhttp.responseText;
+            totalQuestion = xmlhttp.responseText;
+            document.getElementById("total_que").innerHTML = totalQuestion;
         }
     };
     // một yêu cầu HTTP GET được tạo để tải nội dung từ tệp PHP "load_total_que.php"
@@ -71,6 +72,7 @@ function load_total_que() {
 
 var i = 0
 var valuesArray = <?php echo json_encode($values_array); ?>;
+var totalQuestion = 0;
 
 var questionno = 0;  // khởi tạo biến questionno và gán bằng 1
 load_questions(); // gọi hàm load_questions(questionno) để tải câu hỏi đầu tiên
@@ -78,9 +80,7 @@ load_questions(); // gọi hàm load_questions(questionno) để tải câu hỏ
 // Hàm load_questions(questionno) được sử dụng để gửi yêu cầu Ajax đến một trang PHP để lấy câu hỏi từ CSDL
 // Tham số questionno được truyền vào để chỉ định số thứ tự của câu hỏi được yêu cầu
 function load_questions() {
-    console.log(i);
     questionno = valuesArray[i];
-    console.log('no', questionno);
 
     // đưa giá trị của biến questionno vào phần tử HTML có id là "current_que"
     // và hiển thị số câu hỏi hiện tại trên giao diện
@@ -134,10 +134,10 @@ function load_previous() {
 
 // Hàm load_previous được sử dụng để tải câu hỏi sau
 function load_next() {
-    if (i === 19) {
+    if (i === totalQuestion - 1) {
         window.location = "result.php";
     } else {
-        if (i === 18) {
+        if (i === totalQuestion - 2) {
             // câu kế cuối
             document.getElementById('btnNext').value = 'Kết thúc';
             document.getElementById('btnNext').className = 'buttonend';

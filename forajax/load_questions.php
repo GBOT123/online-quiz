@@ -29,12 +29,16 @@ if($count==0)
 }
 else{
     while($row=mysqli_fetch_array($res)){
+        // random các lựa chọn
+        $options = array($row["opt1"], $row["opt2"], $row["opt3"], $row["opt4"]);
+        shuffle($options);
+        
         $question_no=$row["question_no"];
         $question=$row["question"];
-        $opt1=$row["opt1"];
-        $opt2=$row["opt2"];
-        $opt3=$row["opt3"];
-        $opt4=$row["opt4"];
+        $opt1 = $options[0];
+        $opt2 = $options[1];
+        $opt3 = $options[2];
+        $opt4 = $options[3];
     }
     ?>
 <br>

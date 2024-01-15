@@ -20,8 +20,8 @@
 
 </head>
 
-<body>
-    <div class="menu-container">
+<body style="margin:0;">
+    <div class="menu-container-result">
         <ul class="menu">
             <li><a href=" select_exam.php">TRANG CHỦ</a>
             </li>
